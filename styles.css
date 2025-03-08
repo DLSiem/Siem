@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Default Light Theme */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #131e20;
+  --header-bg: #004148;
+  --footer-bg: #000e15;
+  --button-bg: #c8ff00;
+  --button-text: #ffffff;
+  --content-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-radius: 2px;
+}
+
+/* Dark Theme */
+.dark {
+  --bg-color: #004148;
+  --text-color: #f0fdf4;
+  --header-bg: #081c15;
+  --footer-bg: #081c15;
+
+  --button-text: white;
+  --content-bg: #00645f;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure full height layout */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, Cochin, Georgia, Times,
+    "Times New Roman", serif, "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Main Content */
+main {
+  flex: 1; /* Pushes the footer to the bottom */
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--content-bg);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-bg);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto; /* Ensures footer stays at the bottom */
+}
+
+/* Button */
+button {
+  background-color: var(--header-bg);
+  color: var(--button-text);
+  border: 2px solid var(--button-bg);
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  border: 2px solid var(--bg-color);
+  color: var(--button-bg);
+  transition: ease-in-out 0.3s;
+}
