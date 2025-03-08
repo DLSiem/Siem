@@ -1,21 +1,37 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const themeToggle = document.getElementById("theme-toggle");
-  const html = document.documentElement;
+const themeToggle = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+const body = document.body;
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-  // Check for saved theme preference
-  if (localStorage.getItem("theme") === "dark") {
-    html.classList.add("dark");
+// Load Theme from Local Storage
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  themeIcon.src = "assets/sun.png";
+}
+
+// Toggle Theme
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+    themeIcon.src = "assets/sun.png";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeIcon.src = "assets/moon.png";
   }
+});
 
-  // Toggle theme on button click
-  themeToggle.addEventListener("click", () => {
-    html.classList.toggle("dark");
+// Mobile Menu Toggle
+menuToggle.addEventListener("click", (event) => {
+  navLinks.classList.toggle("active");
+  event.stopPropagation();
+});
 
-    // Save theme preference
-    if (html.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-    } else {
-      localStorage.setItem("theme", "light");
-    }
-  });
+// Close Menu when Clicking Outside
+document.addEventListener("click", (event) => {
+  if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+    navLinks.classList.remove("active");
+  }
 });
